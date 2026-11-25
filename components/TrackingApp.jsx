@@ -91,7 +91,7 @@ export default function TrackingApp({ initialAwb = "" }) {
         </a>
         <nav className="nav-links">
           <a href="https://ownairstore.com">Home</a>
-          <a href="https://ownairstore.com/collections/all">Shop</a>
+          <a href="https://ownairstore.com/collections/frontpage">Shop</a>
         </nav>
       </header>
 
