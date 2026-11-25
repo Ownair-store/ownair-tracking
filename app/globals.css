@@ -64,7 +64,7 @@ a { color: inherit; text-decoration: none; }
 .hero-truck svg { width: 100%; height: auto; display: block; overflow: visible; }
 .hero-truck-body { animation: bob 1.3s ease-in-out infinite; transform-origin: center; }
 .hero-truck-speed path { animation: speedDash 0.85s linear infinite; }
-.hero-truck-wheel { transform-origin: center; animation: wheelSpin 1.2s linear infinite; }
+.hero-truck-wheel { transform-box: fill-box; transform-origin: center; animation: wheelSpin 1.2s linear infinite; }
 .hero-truck-wheel:nth-of-type(2) { animation-duration: 1.1s; }
 
 /* Tracking card */
@@ -152,7 +152,7 @@ a { color: inherit; text-decoration: none; }
 .truck-loader { text-align: center; padding: 30px 0 10px; }
 .truck-animation { position: relative; width: 180px; height: 110px; margin: 0 auto 14px; }
 .loading-truck { width: 150px; height: auto; position: absolute; left: 15px; top: 8px; animation: loaderDrive 0.8s ease-in-out infinite; }
-.truck-wheel { transform-origin: center; animation: wheelSpin 0.7s linear infinite; }
+.truck-wheel { transform-box: fill-box; transform-origin: center; animation: wheelSpin 0.7s linear infinite; }
 .truck-speed-lines { position: absolute; left: 0; top: 24px; width: 40px; }
 .truck-speed-lines span { display: block; height: 3px; border-radius: 3px; background: var(--accent); margin: 9px 0; animation: speedDash 0.75s linear infinite; }
 .truck-speed-lines span:nth-child(2) { width: 70%; animation-delay: 0.15s; }
