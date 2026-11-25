@@ -52,27 +52,44 @@ export default function TrackingApp({ initialAwb = "" }) {
       <Navbar />
       <main className="container">
         <section className="hero">
-          <h1>Track your order</h1>
-          <p className="sub">Enter your tracking number to see where your Ownair order is.</p>
-          <form className="track-form" onSubmit={onSubmit}>
-            <input
-              type="text"
-              inputMode="numeric"
-              placeholder="Enter tracking / AWB number"
-              value={awb}
-              onChange={(e) => setAwb(e.target.value)}
-              aria-label="Tracking number"
-            />
-            <button type="submit" disabled={loading}>
-              {loading ? <span className="spinner" aria-label="Loading" /> : "Track"}
-            </button>
-          </form>
+          <div className="hero-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="1" y="3" width="15" height="13" />
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+          </div>
+          <h1>Track Your Order</h1>
+          <p className="sub">
+            Your order is on its way! Enter your tracking number below to check the latest shipment updates.
+          </p>
         </section>
 
-        {error && <div className="message error">{error}</div>}
-        {data && <Result data={data} />}
+        <section className="form-wrap">
+          <div className="form-card">
+            <h2 className="form-title">Where is your order?</h2>
+            <form className="track-form" onSubmit={onSubmit}>
+              <input
+                type="text"
+                inputMode="numeric"
+                placeholder="Enter your tracking number"
+                value={awb}
+                onChange={(e) => setAwb(e.target.value)}
+                aria-label="Tracking number"
+              />
+              <button type="submit" disabled={loading}>
+                {loading ? <span className="spinner" aria-label="Loading" /> : <>Track Order &rarr;</>}
+              </button>
+            </form>
+
+            {error && <div className="message error">{error}</div>}
+            {data && <Result data={data} />}
+          </div>
+        </section>
+
+        <SupportCard />
       </main>
-      <Footer />
     </div>
   );
 }
@@ -88,7 +105,7 @@ function Result({ data }) {
   ].filter(([, v]) => v);
 
   return (
-    <section className="result">
+    <div className="result">
       <div className="result-head">
         <span className="hi">Hi {data.customer_name || "there"},</span>
         <span className={`badge ${exception ? "badge-ex" : ""}`}>{data.stage_label}</span>
@@ -116,7 +133,7 @@ function Result({ data }) {
           View on Delhivery &rarr;
         </a>
       )}
-    </section>
+    </div>
   );
 }
 
@@ -129,10 +146,7 @@ function Timeline({ stage }) {
         const active = num === stage;
         const done = num <= stage;
         return (
-          <div
-            key={i}
-            className={`step ${done ? "done" : ""} ${active ? "active" : ""}`}
-          >
+          <div key={i} className={`step ${done ? "done" : ""} ${active ? "active" : ""}`}>
             <div className="dot" style={{ animationDelay: `${i * 0.1}s` }}>
               {completed ? "✓" : num}
             </div>
@@ -157,21 +171,16 @@ function Navbar() {
   );
 }
 
-function Footer() {
+function SupportCard() {
   return (
-    <footer className="footer" id="support">
-      <div className="container footer-inner">
-        <h3>Customer support</h3>
-        <p className="muted">Reach a real person on call, WhatsApp or email.</p>
-        <div className="support-contacts">
-          <a href="tel:+919226267775">+91 92262 67775</a>
-          <a href="mailto:support@ownairstore.com">support@ownairstore.com</a>
-        </div>
-        <a className="wa-btn" href="https://wa.me/919226267775" target="_blank" rel="noreferrer">
-          WhatsApp us
-        </a>
-        <p className="muted copyright">© {new Date().getFullYear()} Ownair. All rights reserved.</p>
+    <section className="support-card" id="support">
+      <h3>Need Help With Your Order?</h3>
+      <p>Our support team is here to help you. Reach out to us for any questions regarding your shipment.</p>
+      <div className="support-btns">
+        <a className="sbtn" href="tel:+919226267775">Call Us</a>
+        <a className="sbtn" href="https://wa.me/919226267775" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a className="sbtn" href="mailto:support@ownairstore.com">Email Support</a>
       </div>
-    </footer>
+    </section>
   );
 }
