@@ -249,8 +249,7 @@ function Result({ d }) {
             return (
               <div className={`step ${cls}`} key={label} aria-current={isCurrent ? "step" : undefined}>
                 <div className="dot">
-                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageIcon />)}
-
+                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageBox />)}
                 </div>
                 <div className="step-label">{label}</div>
               </div>
@@ -344,17 +343,14 @@ function HeroTruck() {
 /* ====================== ICONS ====================== */
 function PackageBox() {
   return (
-    <svg className="stage-pkg" viewBox="0 0 80 80" aria-hidden="true">
-      <g className="pkg-body">
-        <rect x="18" y="36" width="44" height="32" rx="4" fill="#7c5cd6" />
-        <rect x="36" y="36" width="8" height="32" fill="#5b3fb0" />
-        <path d="M18 44 H62" stroke="#5b3fb0" strokeWidth="2" />
-        <g className="pkg-lid">
-          <rect x="13" y="26" width="54" height="13" rx="3" fill="#9b82e4" />
-          <rect x="36" y="26" width="8" height="13" fill="#5b3fb0" />
-        </g>
+    <svg className="stage-pkg" viewBox="0 0 64 64" aria-hidden="true">
+      <g className="pkg-box">
+        <polygon points="32,4 59,18.5 32,33 5,18.5" fill="#edc88e" />
+        <polygon points="5,18.5 32,33 32,60 5,45.5" fill="#d4a25c" />
+        <polygon points="59,18.5 32,33 32,60 59,45.5" fill="#bd863f" />
+        <polygon points="32,4 5,18.5 13,22.8 40,8.3" fill="#6e4b2a" />
+        <polygon points="5,18.5 13,22.8 13,49.3 5,45.5" fill="#5c3d22" />
       </g>
-      <path className="pkg-sparkles" d="M9 9V19M4 14H14M70 6V16M65 11H75" stroke="#c9b8f2" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
