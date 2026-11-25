@@ -64,7 +64,7 @@ export default function TrackingApp({ initialAwb = "" }) {
               aria-label="Tracking number"
             />
             <button type="submit" disabled={loading}>
-              {loading ? "Tracking…" : "Track"}
+              {loading ? <span className="spinner" aria-label="Loading" /> : "Track"}
             </button>
           </form>
         </section>
@@ -79,6 +79,14 @@ export default function TrackingApp({ initialAwb = "" }) {
 
 function Result({ data }) {
   const exception = data.is_exception;
+  const rows = [
+    ["Tracking No.", data.tracking_id],
+    ["Order No.", data.order_no],
+    ["Destination", data.destination],
+    ["Current Location", data.current_location],
+    ["Expected Delivery", data.expected_delivery],
+  ].filter(([, v]) => v);
+
   return (
     <section className="result">
       <div className="result-head">
@@ -95,11 +103,12 @@ function Result({ data }) {
       )}
 
       <div className="details">
-        <Row label="Tracking No." value={data.tracking_id} />
-        <Row label="Order No." value={data.order_no} />
-        <Row label="Destination" value={data.destination} />
-        <Row label="Current Location" value={data.current_location} />
-        <Row label="Expected Delivery" value={data.expected_delivery} />
+        {rows.map(([label, value], i) => (
+          <div className="row" key={label} style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
+            <span className="row-label">{label}</span>
+            <span className="row-value">{value}</span>
+          </div>
+        ))}
       </div>
 
       {data.courier_link && (
@@ -120,22 +129,17 @@ function Timeline({ stage }) {
         const active = num === stage;
         const done = num <= stage;
         return (
-          <div key={i} className={`step ${done ? "done" : ""} ${active ? "active" : ""}`}>
-            <div className="dot">{completed ? "✓" : num}</div>
+          <div
+            key={i}
+            className={`step ${done ? "done" : ""} ${active ? "active" : ""}`}
+          >
+            <div className="dot" style={{ animationDelay: `${i * 0.1}s` }}>
+              {completed ? "✓" : num}
+            </div>
             <div className="step-label">{label}</div>
           </div>
         );
       })}
-    </div>
-  );
-}
-
-function Row({ label, value }) {
-  if (!value) return null;
-  return (
-    <div className="row">
-      <span className="row-label">{label}</span>
-      <span className="row-value">{value}</span>
     </div>
   );
 }
@@ -145,8 +149,7 @@ function Navbar() {
     <header className="nav">
       <div className="container nav-inner">
         <a className="brand" href="/">
-          <span className="brand-mark" />
-          ownair
+          <img className="brand-logo" src="/ownair-logo.png" alt="Ownair" />
         </a>
         <a className="nav-support" href="#support">Support</a>
       </div>
@@ -158,8 +161,16 @@ function Footer() {
   return (
     <footer className="footer" id="support">
       <div className="container footer-inner">
-        <p>Need help with your order? Reach out to Ownair support.</p>
-        <p className="muted">© {new Date().getFullYear()} Ownair. All rights reserved.</p>
+        <h3>Customer support</h3>
+        <p className="muted">Reach a real person on call, WhatsApp or email.</p>
+        <div className="support-contacts">
+          <a href="tel:+919226267775">+91 92262 67775</a>
+          <a href="mailto:support@ownairstore.com">support@ownairstore.com</a>
+        </div>
+        <a className="wa-btn" href="https://wa.me/919226267775" target="_blank" rel="noreferrer">
+          WhatsApp us
+        </a>
+        <p className="muted copyright">© {new Date().getFullYear()} Ownair. All rights reserved.</p>
       </div>
     </footer>
   );
