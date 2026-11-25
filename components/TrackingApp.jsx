@@ -248,7 +248,9 @@ function Result({ d }) {
             const cls = isCompleted ? "done" : isCurrent ? "active" : "pending";
             return (
               <div className={`step ${cls}`} key={label} aria-current={isCurrent ? "step" : undefined}>
-                <div className="dot">{isCompleted ? "✓" : n}</div>
+                <div className="dot">
+                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageIcon />)}
+                </div>
                 <div className="step-label">{label}</div>
               </div>
             );
@@ -357,6 +359,22 @@ function SupportIcon({ type }) {
           <path d="M2 6L12 13L22 6" />
         </>
       )}
+    </svg>
+  );
+}
+function PackageIcon() {
+  return (
+    <svg className="stage-pkg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <path d="m3.3 7 8.7 5 8.7-5" />
+      <path d="M12 22V12" />
+    </svg>
+  );
+}
+function CheckMark() {
+  return (
+    <svg className="stage-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12l4 4L19 6" />
     </svg>
   );
 }
