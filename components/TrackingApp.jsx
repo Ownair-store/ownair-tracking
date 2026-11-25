@@ -249,7 +249,8 @@ function Result({ d }) {
             return (
               <div className={`step ${cls}`} key={label} aria-current={isCurrent ? "step" : undefined}>
                 <div className="dot">
-                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageBox />)}
+                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageIcon />)}
+
                 </div>
                 <div className="step-label">{label}</div>
               </div>
@@ -384,3 +385,4 @@ function SupportIcon({ type }) {
     </svg>
   );
 }
+
