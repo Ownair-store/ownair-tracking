@@ -248,7 +248,9 @@ function Result({ d }) {
             const cls = isCompleted ? "done" : isCurrent ? "active" : "pending";
             return (
               <div className={`step ${cls}`} key={label} aria-current={isCurrent ? "step" : undefined}>
-                <div className="dot">{isCompleted ? "✓" : n}</div>
+                <div className="dot">
+                  {isCurrent && (stage === 4 ? <CheckMark /> : <PackageBox />)}
+                </div>
                 <div className="step-label">{label}</div>
               </div>
             );
@@ -339,7 +341,29 @@ function HeroTruck() {
 }
 
 /* ====================== ICONS ====================== */
-
+function PackageBox() {
+  return (
+    <svg className="stage-pkg" viewBox="0 0 80 80" aria-hidden="true">
+      <g className="pkg-body">
+        <rect x="18" y="36" width="44" height="32" rx="4" fill="#7c5cd6" />
+        <rect x="36" y="36" width="8" height="32" fill="#5b3fb0" />
+        <path d="M18 44 H62" stroke="#5b3fb0" strokeWidth="2" />
+        <g className="pkg-lid">
+          <rect x="13" y="26" width="54" height="13" rx="3" fill="#9b82e4" />
+          <rect x="36" y="26" width="8" height="13" fill="#5b3fb0" />
+        </g>
+      </g>
+      <path className="pkg-sparkles" d="M9 9V19M4 14H14M70 6V16M65 11H75" stroke="#c9b8f2" strokeWidth="2.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+function CheckMark() {
+  return (
+    <svg className="stage-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 12l4 4L19 6" />
+    </svg>
+  );
+}
 function SupportIcon({ type }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
