@@ -92,11 +92,10 @@ a { text-decoration: none; color: inherit; }
 .tracking-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .track-btn {
   height: 56px; min-width: 150px; padding: 0 22px; border: none; border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-3), var(--accent-2)); color: #fff;
-  font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(124, 92, 214, 0.25); transition: transform .2s, box-shadow .2s;
+  background: #0a0a0a; color: #fff; font-size: 15px; font-weight: 600; font-family: inherit;
+  cursor: pointer; white-space: nowrap; transition: transform .2s, background .2s, box-shadow .2s;
 }
-.track-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(124, 92, 214, 0.35); }
+.track-btn:hover:not(:disabled) { background: #1c1c1c; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
 .track-btn:disabled { opacity: .65; cursor: wait; }
 
 /* ===== RESULTS ===== */
@@ -212,23 +211,23 @@ a { text-decoration: none; color: inherit; }
 .truck-loading-dots span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes truck-dot-bounce { 0%,60%,100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-5px); opacity: 1; } }
 
-/* ===== SUPPORT (icon-card grid) ===== */
+/* ===== SUPPORT ===== */
 .support-section {
   margin-top: 22px; padding: 28px; border-radius: 20px;
   background: linear-gradient(125deg, #ebe3fb, #f5f1fe); border: 1px solid #e3d9f6; color: #1e1630; text-align: center;
 }
 .support-section h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 11px; }
 .support-section > p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 460px; margin: 0 auto; }
-.support-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.support-actions { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
 .support-btn {
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-  min-height: 86px; width: 100%; background: #fff; border: 1px solid #ddcff2; border-radius: 13px;
-  color: #241a3a; font-size: 13px; font-weight: 600; padding: 14px 8px; transition: .2s;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: #0a0a0a; border: none; border-radius: 999px; color: #fff;
+  font-size: 14px; font-weight: 600; padding: 12px 22px; transition: .2s;
 }
-.support-btn svg { width: 25px; height: 25px; color: var(--accent); }
-.support-btn:nth-child(2) svg { color: var(--ok); }
-.support-btn:nth-child(3) svg { color: #a855f7; }
-.support-btn:hover { border-color: #b79ae8; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(60, 38, 110, 0.12); }
+.support-btn svg,
+.support-btn:nth-child(2) svg,
+.support-btn:nth-child(3) svg { width: 17px; height: 17px; color: #fff; }
+.support-btn:hover { background: #1c1c1c; transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
 .support-btn:focus-visible, .track-btn:focus-visible { outline: 3px solid #c4b2f0; outline-offset: 3px; }
 
 /* ===== MOBILE ===== */
@@ -261,8 +260,12 @@ a { text-decoration: none; color: inherit; }
 
   .support-section { margin-top: 20px; padding: 22px 12px; }
   .support-section h2 { font-size: 20px; }
-  .support-actions { gap: 8px; }
-  .support-btn { min-height: 76px; font-size: 11px; padding: 12px 4px; }
+  .support-actions { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .support-btn { width: 100%; justify-content: center; padding: 12px 16px; font-size: 13px; }
+  .support-btn svg,
+  .support-btn:nth-child(2) svg,
+  .support-btn:nth-child(3) svg { width: 17px; height: 17px; color: #fff; }
+  .support-btn:hover { background: #1c1c1c; transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
 
   .truck-animation { width: 230px; height: 105px; }
   .loading-truck { width: 105px; left: calc(50% - 52.5px); }
