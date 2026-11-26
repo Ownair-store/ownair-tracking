@@ -345,11 +345,13 @@ function PackageBox() {
   return (
     <svg className="stage-pkg" viewBox="0 0 64 64" aria-hidden="true">
       <g className="pkg-box">
-        <polygon points="32,4 59,18.5 32,33 5,18.5" fill="#edc88e" />
-        <polygon points="5,18.5 32,33 32,60 5,45.5" fill="#d4a25c" />
-        <polygon points="59,18.5 32,33 32,60 59,45.5" fill="#bd863f" />
-        <polygon points="32,4 5,18.5 13,22.8 40,8.3" fill="#6e4b2a" />
-        <polygon points="5,18.5 13,22.8 13,49.3 5,45.5" fill="#5c3d22" />
+        <polygon points="32,4 58,18.5 32,33 6,18.5" fill="#ecc78d" />
+        <polygon points="6,18.5 32,33 32,59 6,45" fill="#d2a058" />
+        <polygon points="58,18.5 32,33 32,59 58,45" fill="#b67d3c" />
+        <path d="M6,18.5 L32,25 L58,18.5" fill="none" stroke="#dcb272" strokeWidth="1.2" />
+        <path d="M32,25 L32,33" stroke="#c89a52" strokeWidth="1.2" />
+        <polygon points="32,4 6,18.5 14,22.8 40,8.3" fill="#6e4b2a" />
+        <polygon points="6,18.5 14,22.8 14,49.3 6,45" fill="#5c3d22" />
       </g>
     </svg>
   );
