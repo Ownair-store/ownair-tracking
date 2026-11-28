@@ -4,6 +4,8 @@ Customer order-tracking page for the Ownair store. A React (Next.js) app that
 shows live shipment status from **Delhivery** — no CRM is involved. Matches the
 Seznik tracking design, recoloured to the Ownair brand.
 
+**Status:** Live at **https://ownair-tracking.vercel.app**  (custom domain `track.ownair.in` pending)
+
 ## How it works
 
 Customer → this site (Next.js on Vercel) → `ownair-tracking-proxy` (Cloudflare
